@@ -1,0 +1,279 @@
+/**
+ * テーブルレイアウト専用スタイル
+ * 位置、サイズ、配置に関するスタイルのみ
+ * 色やボーダーなどの装飾は含まない
+ * 
+ * このファイルがテーブルの基本レイアウトを定義します。
+ */
+
+/* CSS変数をインポート */
+@import '../../core/variables.css';
+
+/* コンテナのレイアウト */
+.progress-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* テーブルラッパーのレイアウト */
+.table-wrapper {
+  width: 100%;
+  overflow: auto;
+  position: relative;
+  max-height: var(--table-max-height);
+}
+
+/* テーブル本体のレイアウト */
+.progress-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+/* ヘッダーの位置設定 */
+.progress-table thead {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky-table);
+}
+
+/* セルの基本レイアウト */
+.progress-table th,
+.progress-table td {
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* データセルのテキスト省略設定 */
+.progress-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ヘッダーセルのレイアウト */
+.progress-table th {
+  vertical-align: middle;
+  font-weight: bold;
+  height: var(--table-header-height);
+  padding: var(--table-cell-padding);
+}
+
+/* グループヘッダーのレイアウト */
+.group-header-row th {
+  text-align: center;
+  height: var(--table-row-height);
+  vertical-align: middle;
+  white-space: normal;
+  overflow: visible;
+  position: relative;
+}
+
+/* フィールドヘッダーのレイアウト */
+.field-header-row th {
+  text-align: left;
+  padding: var(--table-cell-padding);
+  min-height: var(--table-header-with-summary-height);
+  vertical-align: top;
+  position: relative;
+  white-space: normal;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* データセルのレイアウト */
+.progress-table td {
+  vertical-align: middle;
+  height: var(--table-row-height);
+  padding: var(--table-cell-padding);
+  white-space: nowrap;
+  line-height: var(--line-height-tight);
+}
+
+/* グループヘッダーのレイアウト */
+.group-header-cell {
+  position: relative;
+}
+
+/* フィールドヘッダー内要素のレイアウト */
+.field-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  min-height: var(--field-header-content-min-height);
+}
+
+.field-header-content * {
+  margin: 0;
+  padding: 0;
+}
+
+.field-title span {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+/* より詳細度の高いセレクタでもpadding設定を維持 */
+:is(.progress-table, .table-wrapper) :is(.field-header-row, .group-header-row) th {
+  padding: var(--table-cell-padding);
+}
+
+.field-title {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--font-size-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing-1) / 2);
+  margin: 0;
+  padding: 0;
+  line-height: var(--line-height-compact);
+}
+
+.field-summary {
+  font-size: var(--font-size-xs);
+  font-weight: normal;
+  opacity: 0.8;
+  white-space: pre-line;
+  line-height: var(--line-height-compact);
+  margin: 0;
+  padding: 0;
+}
+
+/* ソートアイコンのレイアウト */
+.sort-icon {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* フィルターアイコンのレイアウト */
+.filter-icon {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* 編集可能セルのレイアウト */
+.editable-cell {
+  position: relative;
+}
+
+.edit-icon {
+  position: absolute;
+  right: var(--spacing-1);
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.editable-cell:hover .edit-icon {
+  display: flex;
+}
+
+/* セル内容のレイアウト */
+.cell-with-memo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 選択セルのレイアウト */
+.select-cell,
+.select-header {
+  text-align: center;
+  padding: calc(var(--spacing-1) / 2);
+}
+
+.select-cell input[type="checkbox"],
+.select-header input[type="checkbox"] {
+  cursor: pointer;
+  margin: 0;
+  transform: scale(0.9);
+}
+
+/* ローディングセルのレイアウト */
+.loading-cell {
+  text-align: center;
+  padding: var(--spacing-8);
+}
+
+/* ダブルクリック可能な進捗セルのレイアウト */
+.field-progress.clickable-progress {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 進捗入力フィールドのレイアウト */
+.progress-input {
+  width: calc(100% - var(--spacing-1));
+  padding: calc(var(--spacing-1) / 2) var(--spacing-1);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+}
+
+/* 削除列のレイアウト */
+.delete-column {
+  width: var(--delete-column-width);
+  min-width: var(--delete-column-width);
+  max-width: var(--delete-column-width);
+  text-align: center;
+  background-color: var(--bg-light);
+  border-left: var(--border-width) solid var(--border-color);
+}
+
+/* 削除リンクのスタイル */
+.delete-link {
+  color: var(--color-danger);
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: inline-block;
+  line-height: var(--line-height-compact);
+  padding: var(--spacing-1px);
+  border-radius: var(--border-radius-xs);
+  user-select: none;
+}
+
+.delete-link:hover {
+  color: var(--color-danger-dark);
+  background-color: var(--bg-hover);
+}
+
+.delete-link:active {
+  color: var(--color-danger-dark);
+  background-color: var(--bg-hover);
+  transform: scale(0.95);
+}
+
+.delete-link:focus {
+  outline: var(--outline-width) solid var(--border-focus);
+  outline-offset: var(--spacing-1px);
+}
+
+.delete-link:focus:not(:focus-visible) {
+  outline: none;
+}

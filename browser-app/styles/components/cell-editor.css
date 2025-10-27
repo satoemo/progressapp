@@ -1,0 +1,24 @@
+/* 編集可能なセルのホバー表示 */
+.editable-cell:hover {
+  background-color: var(--color-gray-50);
+}
+
+/* 編集中のセル（contenteditable） */
+.progress-table td.cell-editing {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  background-color: var(--color-white);
+  cursor: text;
+}
+
+/* contenteditable時のフォーカススタイル */
+.progress-table td.cell-editing:focus {
+  outline: 2px solid var(--color-primary);
+}
+
+/* 数値フィールドの編集時 */
+.progress-table td.cell-editing.editable-cell[data-field$="Cost"],
+.progress-table td.cell-editing.editable-cell[data-field="maisu"],
+.progress-table td.cell-editing.editable-cell[data-field="dougaMaki"] {
+  text-align: right;
+}

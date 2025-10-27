@@ -1,0 +1,50 @@
+/**
+ * テーブルのテキスト配置専用スタイル
+ * 特定のセルタイプごとの配置を定義
+ */
+
+/* 金額と枚数は右揃え */
+.progress-table td.currency,
+.progress-table td.maisu,
+.progress-table td[data-field="maisu"],
+.progress-table td[data-field="dougaMaki"],
+.progress-table td[data-field="loCost"],
+.progress-table td[data-field="genCost"],
+.progress-table td[data-field="dougaCost"],
+.progress-table td[data-field="doukenCost"],
+.progress-table td[data-field="shiageCost"] {
+  text-align: right;
+  padding-right: var(--spacing-3);
+}
+
+/* 進捗・ステータス系のセルは中央揃え */
+.progress-table td.progress-cell,
+.progress-table td.special,
+.progress-table td[data-field="cutNumber"],
+.progress-table td[data-field="status"] {
+  text-align: center;
+}
+
+/* チェックボックスセルも中央揃え */
+.progress-table td.select-cell {
+  text-align: center;
+}
+
+/* 日付系のセルも中央揃え */
+.progress-table td[data-field*="Up"],
+.progress-table td[data-field*="In"],
+.progress-table td[data-field*="Check"],
+.progress-table td[data-field*="Render"] {
+  text-align: center;
+}
+
+/* ローディングセルは中央揃え */
+.progress-table td.loading-cell {
+  text-align: center;
+}
+
+/* 編集可能セルで編集中の場合 */
+.progress-table td.editing input,
+.progress-table td.editing select {
+  text-align: inherit;
+}

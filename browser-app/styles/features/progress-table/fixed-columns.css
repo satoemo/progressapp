@@ -1,0 +1,151 @@
+/* 固定列・固定行の実装（tohoho-web方式） */
+
+/**
+ * 固定列・固定行の実装について
+ * 
+ * このファイルは、テーブルの左側2列（カット番号・ステータス）と
+ * 上側2行（グループヘッダー・フィールドヘッダー）を固定する実装です。
+ * 
+ * 実装方針：
+ * - CSS position: sticky を使用（IE11非対応、モダンブラウザ対応）
+ * - :is() 擬似クラスで簡潔なセレクタ記述
+ * - z-index はCSS変数を使用してレイヤー管理を一元化
+ * 
+ * 参考：https://www.tohoho-web.com/how2/header-fixed-table-both.html
+ */
+
+/* ============================================
+ * 固定列・固定行のスタイル
+ * 変数はcomputed-variables.cssで定義
+ * ============================================ */
+
+/* ============================================
+ * 固定ヘッダー（1行目・2行目）
+ * ============================================ */
+
+/* グループヘッダー行（1行目）
+ * - 画面上部に固定
+ * - top: 0 でビューポートの最上部に配置
+ * - z-index: var(--z-index-sticky-cell) で他の要素より前面に表示
+ */
+.progress-table thead tr:nth-child(1) th {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky-cell);
+}
+
+/* フィールドヘッダー行（2行目）
+ * - グループヘッダーの直下に固定
+ * - top値は computed-variables.css で動的計算
+ *   計算式: table-row-height(20px) + border-width-thick(2px) = 22px
+ * - z-index: var(--z-index-sticky-cell) で他の要素より前面に表示
+ */
+.progress-table thead tr:nth-child(2) th {
+  position: sticky;
+  top: var(--field-header-sticky-top); /* computed-variables.cssで計算 */
+  z-index: var(--z-index-sticky-cell);
+}
+
+/* ============================================
+ * 固定列（基本情報グループ：カット番号・ステータス）
+ * ============================================ */
+
+/* 1列目（カット番号）の固定
+ * - 従来のセレクタで確実に適用
+ * - left: 0 で左端に固定
+ * - 幅: 90px（computed-variables.css で定義）
+ */
+.progress-table thead th:nth-child(1),
+.progress-table tbody td:nth-child(1) {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: var(--z-index-sticky-cell) !important;
+}
+
+/* 2列目（ステータス）の固定
+ * - カット番号列の右側に固定
+ * - left値は computed-variables.css で計算（90px）
+ * - 幅: 120px（computed-variables.css で定義）
+ */
+.progress-table thead th:nth-child(2),
+.progress-table tbody td:nth-child(2) {
+  position: sticky !important;
+  left: var(--fixed-column-2-offset) !important; /* computed-variables.cssで計算 */
+  z-index: var(--z-index-sticky-cell) !important;
+}
+
+/* ============================================
+ * 交差部分（左上の固定セル）の特別処理
+ * ============================================ */
+
+/* 1行目の固定列（グループヘッダーの基本情報部分）
+ * - 固定行と固定列が交差する部分
+ * - z-index: var(--z-index-sticky-header) で他の固定要素より前面に表示
+ * - スクロール時に他の要素の下に隠れないようにする
+ */
+.progress-table thead tr:nth-child(1) th:nth-child(1) {
+  z-index: var(--z-index-sticky-header) !important;
+}
+
+/* 2行目の固定列（フィールドヘッダーのカット番号・ステータス）
+ * - 固定行と固定列が交差する部分
+ * - z-index: var(--z-index-sticky-header) で他の固定要素より前面に表示
+ * - 縦横両方向のスクロールに対応
+ */
+.progress-table thead tr:nth-child(2) th:nth-child(1),
+.progress-table thead tr:nth-child(2) th:nth-child(2) {
+  z-index: var(--z-index-sticky-header) !important;
+}
+
+/* ============================================
+ * 背景色の保持
+ * ============================================ */
+
+/* ヘッダーの背景色 */
+.progress-table thead th {
+  background-color: var(--bg-header, #f5f5f5);
+}
+
+/* データ行の固定列背景色 */
+.progress-table tbody tr td:nth-child(1),
+.progress-table tbody tr td:nth-child(2) {
+  background-color: var(--bg-white, #ffffff);
+}
+
+/* ストライプ行の固定列 */
+.progress-table tbody tr:nth-child(even) td:nth-child(1),
+.progress-table tbody tr:nth-child(even) td:nth-child(2) {
+  background-color: var(--bg-stripe, #fafbfc);
+}
+
+/* ホバー時の固定列 */
+.progress-table tbody tr:hover td:nth-child(1),
+.progress-table tbody tr:hover td:nth-child(2) {
+  background-color: var(--bg-hover, #e9ecef);
+}
+
+/* ============================================
+ * 境界線の調整
+ * ============================================ */
+
+/* 固定列の右境界線 */
+.progress-table td:nth-child(2),
+.progress-table th:nth-child(2) {
+  border-right: 2px solid var(--border-color-dark, #ced4da);
+}
+
+/* ============================================
+ * リテイク行の特別処理
+ * ============================================ */
+
+/* リテイク行の固定列 */
+.progress-table tbody tr td.retake:is(:nth-child(1), :nth-child(2)) {
+  background-color: var(--progress-retake-bg, #f8d7da);
+  color: var(--progress-retake-color, #721c24);
+}
+
+/* リテイク行のホバー時 */
+.progress-table tbody tr:hover td.retake:is(:nth-child(1), :nth-child(2)) {
+  background-color: var(--bg-hover, #e9ecef);
+  color: var(--progress-retake-color, #721c24);
+}

@@ -1,0 +1,213 @@
+/* ドロップダウンポップアップコンテナ */
+.dropdown-popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--popup-z-index);
+  pointer-events: none;
+}
+
+/* ドロップダウンポップアップ */
+.dropdown-popup {
+  position: absolute;
+  background-color: var(--popup-bg);
+  border: var(--border-width) solid var(--popup-border);
+  border-radius: var(--popup-border-radius);
+  box-shadow: var(--popup-shadow);
+  min-width: var(--popup-min-width);
+  pointer-events: auto;
+}
+
+/* ヘッダー部分（CalendarPopupスタイルに準拠） */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-bottom: var(--border-width) solid var(--border-color);
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.popup-title {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* 閉じるボタン */
+.popup-close-btn {
+  background: none;
+  border: none;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  color: var(--text-muted);
+  width: var(--button-size-sm);
+  height: var(--button-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-base);
+}
+
+.popup-close-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-dark);
+}
+
+/* 入力セクション */
+.dropdown-input-section {
+  padding: var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* 入力フィールド（CalendarPopupスタイルに準拠） */
+.dropdown-input {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--border-color-dark);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  width: 100%;
+  outline: none;
+  background-color: var(--color-white);
+}
+
+.dropdown-input:focus {
+  border-color: var(--color-primary);
+}
+
+/* ドロップダウンセクション */
+.dropdown-section {
+  padding: 0 var(--spacing-3) var(--spacing-3);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* ドロップダウンアイテム */
+.dropdown-item {
+  padding: var(--spacing-2) var(--spacing-3);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-item:hover {
+  background-color: var(--dropdown-item-hover-bg);
+}
+
+/* 現在値のハイライト */
+.dropdown-item.current {
+  background-color: var(--dropdown-item-current-bg);
+  font-weight: bold;
+}
+
+/* スクロールバーのスタイル */
+.dropdown-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-section::-webkit-scrollbar-track {
+  background: var(--dropdown-scrollbar-track);
+}
+
+.dropdown-section::-webkit-scrollbar-thumb {
+  background: var(--dropdown-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.dropdown-section::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-700);
+}
+
+/* ボタンセクション（CalendarPopupスタイルに準拠） */
+.buttons-section {
+  padding: 0 var(--spacing-3) var(--spacing-3);
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+/* 共通ボタンスタイル（CalendarPopupから継承） */
+.popup-btn {
+  flex: 1;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-white);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  transition: var(--transition-base);
+}
+
+.popup-btn:hover {
+  background-color: var(--bg-light);
+}
+
+/* 確定ボタン */
+.popup-btn.btn-confirm {
+  background-color: var(--color-primary, #007bff);
+  color: var(--color-white, #ffffff);
+  border-color: var(--color-primary, #007bff);
+}
+
+.popup-btn.btn-confirm:hover {
+  background-color: var(--color-primary-dark, #0056b3);
+  color: var(--color-white, #ffffff);
+}
+
+/* キャンセルボタン */
+.popup-btn.btn-cancel {
+  background-color: var(--color-secondary, #6c757d);
+  color: var(--color-white, #ffffff);
+  border-color: var(--color-secondary, #6c757d);
+}
+
+.popup-btn.btn-cancel:hover {
+  background-color: var(--color-secondary-dark, #5a6268);
+  color: var(--color-white, #ffffff);
+}
+
+/* ===== 兼用フィールド複数選択ポップアップ ===== */
+
+/* 無効化されたオプション（自分自身） */
+.kenyo-multi-select-popup .filter-option.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.kenyo-multi-select-popup .filter-option.disabled input[type="checkbox"] {
+  cursor: not-allowed;
+}
+
+.kenyo-multi-select-popup .filter-option.disabled .filter-option-value {
+  cursor: not-allowed;
+}
+
+/* 兼用ポップアップコンテナ */
+.kenyo-popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--popup-z-index, 9999);
+  pointer-events: none;
+}
+
+/* 兼用ポップアップ本体 */
+.kenyo-popup-container .kenyo-multi-select-popup {
+  position: absolute;
+  background-color: var(--popup-bg, #fff);
+  border: var(--border-width, 1px) solid var(--popup-border, #e0e0e0);
+  border-radius: var(--popup-border-radius, 4px);
+  box-shadow: var(--popup-shadow, 0 2px 10px rgba(0, 0, 0, 0.1));
+  pointer-events: auto;
+  min-width: var(--popup-width-min);
+  max-width: var(--popup-width-max);
+}

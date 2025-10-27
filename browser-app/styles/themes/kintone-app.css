@@ -1,0 +1,105 @@
+/**
+ * kintone環境専用のスタイル
+ * 
+ * 【重要】このファイルはkintone環境でのみ使用されます
+ * - 一般的なブラウザ環境では読み込まれません
+ * - kintone特有のUI調整とCSP対策を実装
+ * - 一般環境のレスポンシブスタイルとは明確に分離
+ * 
+ * CSP対策のため、すべてのスタイルをクラスとして定義
+ */
+
+/* ==================== kintone環境専用 基本レイアウト ==================== */
+
+/* kintoneアプリコンテナ */
+.kintone-app-container {
+  margin: 0;
+  padding: var(--spacing-5);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==================== kintone環境専用 UI調整 ==================== */
+
+/* kintone環境での追加調整 */
+.kintone-customization .progress-table {
+  /* kintoneの標準UIとの調和 */
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+}
+
+/* kintoneヘッダースペースでの表示調整 */
+.gaia-header-space .kintone-app-container {
+  margin-top: 0;
+  margin-bottom: var(--spacing-5);
+}
+
+/* ==================== kintone環境専用 レスポンシブ対応 ==================== */
+
+/* kintone環境でのレスポンシブ対応（一般環境とは独立） */
+@media (max-width: 768px) {
+  .kintone-app-container {
+    padding: var(--spacing-md);
+  }
+  
+  .kintone-app-container .progress-table {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ==================== kintone環境専用 コンポーネント ==================== */
+
+/* kintone環境でのボタンスタイル統一 */
+.kintone-app-container button {
+  height: var(--button-height);
+  padding: 0 var(--spacing-4);
+  font-size: var(--font-size-md);
+  border: var(--border-width) solid var(--border-color-kintone);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-kintone-bg);
+  color: var(--color-kintone-primary);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.kintone-app-container button:hover {
+  background-color: var(--color-kintone-hover);
+  border-color: var(--color-kintone-primary);
+}
+
+.kintone-app-container button:active {
+  background-color: var(--color-kintone-active);
+}
+
+/* kintone環境でのモーダル・ポップアップ調整 */
+.kintone-app-container .calendar-popup {
+  z-index: var(--z-index-highest); /* kintoneのz-indexより上に表示 */
+}
+
+/* ==================== kintone環境専用 フィードバック ==================== */
+
+/* エラーメッセージのスタイル */
+.kintone-error-message {
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--color-kintone-error-bg);
+  border: var(--border-width) solid var(--color-kintone-error-border);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-kintone-error-text);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-4);
+}
+
+/* ローディング表示 */
+.kintone-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8);
+  color: var(--text-secondary);
+}
+
+.kintone-loading::after {
+  content: "読み込み中...";
+  margin-left: var(--spacing-2);
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-09-16T03:01:59.773Z",
+  "build": {
+    "typecheck": 365,
+    "total": 140
+  },
+  "test": {},
+  "fileMetrics": {
+    "tsFiles": 109,
+    "totalLines": 25374,
+    "applicationFacadeLines": 664,
+    "serviceContainerReferences": 37
+  },
+  "memory": {
+    "distSize": "8.9M",
+    "nodeModulesSize": "182M"
+  }
+}

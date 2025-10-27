@@ -1,0 +1,80 @@
+/* レスポンシブ対応 */
+
+/**
+ * ブレークポイント：
+ * - タブレット: 768px以下
+ * - モバイル: 480px以下
+ */
+
+/* タブレット対応 */
+@media (max-width: 768px) {
+  .progress-table {
+    font-size: 10px;
+  }
+  
+  .progress-table td {
+    padding: var(--spacing-sm) var(--spacing-2);
+    font-size: 10px;
+  }
+  
+  .field-header-row th {
+    font-size: 10px;
+    padding: var(--spacing-sm) var(--spacing-2);
+  }
+  
+  .group-header-row th {
+    font-size: 10px;
+    padding: var(--spacing-sm) var(--spacing-2);
+  }
+  
+  /* 固定列対応：タブレットでは1列目（カット番号）のみ固定 */
+  /* 2列目（ステータス）の固定を解除 */
+  .progress-table :is(thead, tbody) :is(th, td):nth-child(2) {
+    position: static;
+    left: auto;
+  }
+  
+  /* 固定列の幅を調整 */
+  .progress-table thead th:nth-child(1),
+  .progress-table tbody td:nth-child(1) {
+    width: var(--fixed-column-width-tablet);
+    min-width: var(--fixed-column-width-tablet);
+    max-width: var(--fixed-column-width-tablet);
+  }
+}
+
+/* 小画面対応 */
+@media (max-width: 480px) {
+  .table-wrapper {
+    border-radius: 0;
+  }
+  
+  .progress-table td {
+    padding: var(--spacing-sm) var(--spacing-2);
+    font-size: 9px;
+  }
+  
+  .field-title {
+    font-size: 9px;
+  }
+  
+  .field-summary {
+    display: none;
+  }
+  
+  /* 固定列対応：モバイルではすべての固定を解除 */
+  .progress-table thead th:nth-child(1),
+  .progress-table thead th:nth-child(2),
+  .progress-table tbody td:nth-child(1),
+  .progress-table tbody td:nth-child(2) {
+    position: static;
+    left: auto;
+  }
+  
+  /* 固定行も解除（画面が狭いため） */
+  .progress-table thead tr:nth-child(1) th,
+  .progress-table thead tr:nth-child(2) th {
+    position: static;
+    top: auto;
+  }
+}

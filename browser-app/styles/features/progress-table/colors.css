@@ -1,0 +1,106 @@
+/* テーブル色定義 */
+
+/* CSS変数をインポート */
+@import '../../core/variables.css';
+
+/* グループ別の色 */
+.select-group {
+  background-color: var(--color-gray-50);
+  color: var(--text-light);
+}
+
+.basic-group {
+  background-color: var(--group-basic-bg);
+  color: var(--group-basic-color);
+}
+
+.info-group {
+  background-color: var(--group-info-bg);
+  color: var(--group-info-color);
+}
+
+.progress-group {
+  background-color: var(--group-progress-bg);
+  color: var(--group-progress-color);
+}
+
+.special-group {
+  background-color: var(--group-special-bg);
+  color: var(--group-special-color);
+}
+
+.operation-group {
+  background-color: var(--color-gray-50);
+  color: var(--text-dark);
+}
+
+/* サマリータイプ別の色 */
+.progress-summary {
+  color: var(--color-success);
+}
+
+.currency-summary {
+  color: var(--color-info);
+}
+
+.special-summary {
+  color: var(--color-danger);
+}
+
+.maisu-summary {
+  color: var(--color-purple);
+}
+
+.count-summary {
+  color: var(--color-secondary);
+}
+
+/* フィールドカテゴリー別の背景色 */
+/* ストライプパターンに統一するため、個別の背景色定義を削除 */
+
+/* 進捗セルの色分け */
+/* 日付入力済み・「不要」は緑色 */
+.progress-table td.progress-cell.completed {
+  background-color: var(--progress-completed-bg);
+  color: var(--progress-completed-color);
+}
+
+/* ホバー時は通常のホバー色を適用 */
+.progress-table .data-row:hover td.progress-cell.completed {
+  background-color: var(--bg-hover);
+  color: var(--progress-completed-color);
+}
+
+/* ステータスが「完了」のセルのみを緑色背景にする（ストライプより詳細度を高くして適用） */
+.progress-table tbody tr:nth-child(odd) td.status-cell.completed,
+.progress-table tbody tr:nth-child(even) td.status-cell.completed {
+  background-color: var(--progress-completed-bg);
+  color: var(--progress-completed-color);
+}
+
+/* 完了ステータスセルのホバー時 */
+.progress-table tbody tr:nth-child(odd):hover td.status-cell.completed,
+.progress-table tbody tr:nth-child(even):hover td.status-cell.completed {
+  background-color: var(--progress-completed-bg);
+  color: var(--progress-completed-color);
+}
+
+/* リテイクは赤色（ストライプより詳細度を高くして適用） */
+.progress-table tbody tr:nth-child(odd) td.progress-cell.retake,
+.progress-table tbody tr:nth-child(even) td.progress-cell.retake,
+.progress-table tbody tr:nth-child(odd) td.status-cell.retake,
+.progress-table tbody tr:nth-child(even) td.status-cell.retake {
+  background-color: var(--progress-retake-bg);
+  color: var(--progress-retake-color);
+}
+
+/* リテイクのホバー時 */
+.progress-table tbody tr:nth-child(odd):hover td.progress-cell.retake,
+.progress-table tbody tr:nth-child(even):hover td.progress-cell.retake,
+.progress-table tbody tr:nth-child(odd):hover td.status-cell.retake,
+.progress-table tbody tr:nth-child(even):hover td.status-cell.retake {
+  background-color: var(--progress-retake-bg);
+  color: var(--progress-retake-color);
+}
+
+/* 空白はストライプのまま（クラスなし） */

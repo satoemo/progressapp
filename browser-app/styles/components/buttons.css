@@ -1,0 +1,127 @@
+/* ViewModeコントロール */
+.view-mode-controls {
+  padding: var(--spacing-lg) var(--spacing-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view-mode-label {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-right: var(--spacing-lg);
+  color: var(--text-light);
+}
+
+.view-mode-buttons {
+  display: inline-flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+.view-mode-button {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--border-color-dark);
+  background-color: var(--color-white);
+  color: var(--text-light);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.view-mode-button:hover {
+  background-color: var(--color-gray-300);
+  border-color: var(--color-gray-500);
+}
+
+.view-mode-button.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+/* 新規カット追加ボタン */
+.add-cut-button {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--color-success);
+  background-color: var(--color-white);
+  color: var(--color-success);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.add-cut-button:hover {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+/* アクションボタングループ */
+.action-buttons {
+  display: inline-flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+/* ダミーデータ生成ボタン */
+.dummy-data-button {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--color-primary);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dummy-data-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* PDF出力ボタン */
+.export-pdf-button {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--color-info);
+  background-color: var(--color-white);
+  color: var(--color-info);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.export-pdf-button:hover {
+  background-color: var(--color-info);
+  color: var(--color-white);
+}
+
+/* ストレージクリアボタン */
+.clear-storage-button {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--color-danger);
+  background-color: var(--color-white);
+  color: var(--color-danger);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.clear-storage-button:hover {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}

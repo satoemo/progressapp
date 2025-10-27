@@ -1,0 +1,456 @@
+/* ノルマ表のスタイル定義 */
+
+/* ============================================
+ * 基本的なテーブルスタイル
+ * 進捗管理表と同様の2行ヘッダー構造
+ * ============================================ */
+
+/* ノルマ表コンテナ */
+.norma-table-container {
+  width: 100%;
+  min-height: 400px;
+  position: relative;
+  padding: 10px;
+}
+
+/* ノルマ表ヘッダー */
+.norma-table-header {
+  margin-bottom: 10px;
+}
+
+.norma-table-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.norma-table-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* 達成率表示切り替えボタン */
+.norma-toggle-achievement {
+  padding: 4px 12px;
+  font-size: 12px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.norma-toggle-achievement:hover {
+  background-color: #e9ecef;
+}
+
+/* エラー通知 */
+.norma-error-notification {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #f5c6cb;
+}
+
+/* テーブルラッパー（スクロール用） - ノルマ表専用 */
+.norma-table-container .table-wrapper {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: #ffffff;
+  max-height: var(--norma-max-height);
+}
+
+/* 基本的なテーブルスタイル */
+.norma-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 11px;
+  table-layout: fixed;
+}
+
+/* ============================================
+ * ヘッダースタイル（2行構造）
+ * ============================================ */
+
+/* グループヘッダー行 */
+.group-header-row {
+  background-color: #f5f5f5;
+}
+
+.group-header {
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #dee2e6;
+  white-space: normal;
+  overflow: visible;
+}
+
+/* グループヘッダーの色分け */
+.basic-group {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.date-group {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+/* フィールドヘッダー行 */
+.field-header-row {
+  background-color: #f8f9fa;
+}
+
+.field-header {
+  padding: 6px 4px;
+  text-align: center;
+  font-weight: normal;
+  border: 1px solid #dee2e6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+/* 日付ヘッダー */
+.date-header {
+  min-width: 60px;
+}
+
+.date-month {
+  font-size: 10px;
+  color: #6c757d;
+}
+
+.date-day {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* 週計ヘッダー */
+.week-header {
+  background-color: #e2e3e5;
+  font-weight: bold;
+  min-width: 70px;
+}
+
+/* ============================================
+ * データ行スタイル
+ * ============================================ */
+
+/* データ行 */
+.norma-data-row {
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* セクションセル */
+.norma-section-cell {
+  padding: 4px 8px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  font-weight: 600;
+  background-color: #f8f9fa;
+  white-space: nowrap;
+}
+
+/* 担当者名セル */
+.norma-manager-cell {
+  padding: 4px 8px;
+  text-align: left;
+  border: 1px solid #dee2e6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 個人集計セル */
+.norma-personal-total-cell {
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  font-weight: 600;
+  min-width: 80px;
+}
+
+/* データセル */
+.norma-data-cell {
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  min-width: 60px;
+  cursor: pointer;
+}
+
+.norma-editable-cell:hover {
+  background-color: #fff3cd;
+  outline: 1px solid #007bff;
+}
+
+.norma-editable-cell:focus {
+  background-color: #fff3cd;
+  outline: 2px solid #007bff;
+  outline-offset: -1px;
+}
+
+/* 編集中のセル（CellEditorと統一） */
+.norma-data-cell.cell-editing {
+  background-color: #fff3cd !important;
+  outline: 2px solid #007bff !important;
+}
+
+/* 旧クラス名もサポート（互換性のため） */
+.norma-editing {
+  background-color: #fff3cd !important;
+  outline: 2px solid #007bff !important;
+}
+
+/* 週計セル */
+.norma-week-total-cell {
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  background-color: #e2e3e5;
+  font-weight: 600;
+  min-width: 70px;
+}
+
+/* ============================================
+ * 日計行スタイル
+ * ============================================ */
+
+/* セクション小計行（週計と同じ灰色背景色に統一） */
+.norma-section-total-row {
+  background-color: #e2e3e5;
+  font-weight: bold;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.norma-section-total-label {
+  padding: 6px 8px;
+  text-align: left;
+  border: 1px solid #dee2e6;
+  font-weight: bold;
+  background-color: #e2e3e5;
+}
+
+.norma-section-grand-total-cell {
+  padding: 6px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  background-color: #e2e3e5;
+  font-weight: bold;
+}
+
+.norma-section-total-cell {
+  padding: 6px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  background-color: #e2e3e5;
+  font-weight: 600;
+}
+
+.norma-section-week-total-cell {
+  padding: 6px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  background-color: #e2e3e5;
+  font-weight: bold;
+}
+
+
+/* ============================================
+ * 達成率の色分け
+ * ============================================ */
+
+.achievement-high {
+  color: #155724;
+  background-color: #d4edda;
+  font-weight: bold;
+}
+
+.achievement-medium {
+  color: #856404;
+  background-color: #fff3cd;
+}
+
+.achievement-low {
+  color: #721c24;
+  background-color: #f8d7da;
+}
+
+/* ============================================
+ * インライン編集エディタ
+ * ============================================ */
+
+.norma-cell-editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px #007bff;
+  z-index: 1000;
+}
+
+.norma-cell-editor input {
+  width: calc(100% - 8px);
+  height: calc(100% - 4px);
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 11px;
+  font-family: inherit;
+  padding: 2px 4px;
+  background-color: transparent;
+}
+
+/* ============================================
+ * ストライプ・ホバー効果
+ * ============================================ */
+
+/* ストライプ行 */
+.norma-table tbody tr:nth-child(even) {
+  background-color: #fafbfc;
+}
+
+/* ホバー時 */
+.norma-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* ストライプ行のセル背景色維持 */
+.norma-table tbody tr:nth-child(even) .norma-section-cell,
+.norma-table tbody tr:nth-child(even) .norma-personal-total-cell {
+  background-color: #f3f4f6;
+}
+
+/* セクション小計行のセル背景色維持（週計と同じ色、詳細度を上げて確実に適用） */
+.norma-table tbody .norma-section-total-row .norma-section-total-cell,
+.norma-table tbody .norma-section-total-row .norma-section-total-label,
+.norma-table tbody .norma-section-total-row .norma-section-grand-total-cell,
+.norma-table tbody .norma-section-total-row .norma-section-week-total-cell {
+  background-color: #e2e3e5;
+}
+
+/* ホバー時のセル背景色維持 */
+.norma-table tbody tr:hover .norma-section-cell,
+.norma-table tbody tr:hover .norma-personal-total-cell {
+  background-color: #e2e3e5;
+}
+
+/* ============================================
+ * 列幅の設定
+ * ============================================ */
+
+.norma-table col:nth-child(1) { width: 80px; }  /* セクション */
+.norma-table col:nth-child(2) { width: 100px; } /* 担当者名 */
+.norma-table col:nth-child(3) { width: 80px; }  /* 個人集計 */
+
+/* ============================================
+ * 固定列・固定行の実装
+ * ============================================ */
+
+/* 固定ヘッダー（1行目・2行目） */
+.norma-table thead tr:nth-child(1) th {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky-cell, 2);
+}
+
+.norma-table thead tr:nth-child(2) th {
+  position: sticky;
+  top: 22px; /* グループヘッダーの高さ + ボーダー */
+  z-index: var(--z-index-sticky-cell, 2);
+}
+
+/* 固定列（1-3列目：セクション・担当者・個人集計） */
+.norma-table :is(thead, tbody) :is(th, td):nth-child(1) {
+  position: sticky;
+  left: 0;
+  z-index: var(--z-index-sticky-cell, 2);
+}
+
+.norma-table :is(thead, tbody) :is(th, td):nth-child(2) {
+  position: sticky;
+  left: 80px; /* 1列目の幅 */
+  z-index: var(--z-index-sticky-cell, 2);
+}
+
+.norma-table :is(thead, tbody) :is(th, td):nth-child(3) {
+  position: sticky;
+  left: 180px; /* 1列目 + 2列目の幅 */
+  z-index: var(--z-index-sticky-cell, 2);
+}
+
+/* 交差部分（左上の固定セル）の特別処理 */
+.norma-table thead tr:nth-child(1) th:nth-child(1) {
+  z-index: var(--z-index-sticky-header, 3);
+}
+
+.norma-table thead tr:nth-child(2) th:nth-child(1),
+.norma-table thead tr:nth-child(2) th:nth-child(2),
+.norma-table thead tr:nth-child(2) th:nth-child(3) {
+  z-index: var(--z-index-sticky-header, 3);
+}
+
+/* 背景色の保持（固定列） */
+.norma-table tbody tr td:nth-child(1),
+.norma-table tbody tr td:nth-child(2),
+.norma-table tbody tr td:nth-child(3) {
+  background-color: #ffffff;
+}
+
+.norma-table tbody tr:nth-child(even) td:nth-child(1),
+.norma-table tbody tr:nth-child(even) td:nth-child(2),
+.norma-table tbody tr:nth-child(even) td:nth-child(3) {
+  background-color: #fafbfc;
+}
+
+.norma-table tbody tr:hover td:nth-child(1),
+.norma-table tbody tr:hover td:nth-child(2),
+.norma-table tbody tr:hover td:nth-child(3) {
+  background-color: #e9ecef;
+}
+
+/* セクション小計行の左側セルも横スクロール時に固定 */
+.norma-section-total-row td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  z-index: var(--z-index-sticky-cell, 2);
+  background-color: #e2e3e5;
+}
+
+.norma-section-total-row td:nth-child(2) {
+  position: sticky;
+  left: 80px; /* 1列目の幅 */
+  z-index: var(--z-index-sticky-cell, 2);
+  background-color: #e2e3e5;
+}
+
+.norma-section-total-row td:nth-child(3) {
+  position: sticky;
+  left: 180px; /* 1列目 + 2列目の幅 */
+  z-index: var(--z-index-sticky-cell, 2);
+  background-color: #e2e3e5;
+}
+
+
+/* 境界線の調整 */
+.norma-table td:nth-child(3),
+.norma-table th:nth-child(3) {
+  border-right: 2px solid #ced4da;
+}

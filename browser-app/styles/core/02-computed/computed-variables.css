@@ -1,0 +1,75 @@
+:root {
+  /* ============================================
+   * 計算済み変数
+   * 他の変数を使用して計算される値
+   * ============================================ */
+  
+  /* ============================================
+   * 固定列・固定行の位置計算
+   * ============================================ */
+  
+  /* グループヘッダーの高さ計算
+   * - base height: 20px (--table-row-height)
+   * - bottom border: 2px (--border-width-thick)
+   * - total: 22px
+   * 
+   * Note: box-sizing: border-boxだが、borderは要素の外側に描画される
+   */
+  --group-header-computed-height: calc(var(--table-row-height) + var(--border-width-thick));
+  
+  /* フィールドヘッダーの位置（グループヘッダーの下） */
+  --field-header-sticky-top: var(--group-header-computed-height);
+  
+  /* 固定列の幅（実際の値）
+   * Note: これらの値はFieldMetadataRegistryと同期する必要がある
+   * 将来的にはJavaScriptから動的に設定することを検討
+   */
+  --fixed-column-1-actual-width: 90px;  /* カット番号 */
+  --fixed-column-2-actual-width: 120px; /* ステータス */
+  
+  /* 固定列の累積幅 */
+  --fixed-column-1-offset: 0;
+  --fixed-column-2-offset: var(--fixed-column-1-actual-width);
+  --fixed-column-3-offset: calc(var(--fixed-column-1-actual-width) + var(--fixed-column-2-actual-width));
+  
+  /* ============================================
+   * テーブル関連の計算値
+   * ============================================ */
+  
+  /* セルの実際の高さ（padding込み） */
+  --table-cell-computed-height: calc(var(--table-row-height) + var(--table-cell-padding-y) * 2);
+  
+  /* ヘッダーの実際の高さ（padding込み） */
+  --table-header-computed-height: calc(var(--table-header-height) + var(--table-cell-padding-y) * 2);
+  
+  /* ============================================
+   * スクロールバー関連
+   * ============================================ */
+  
+  /* スクロールバーを考慮したコンテンツ幅 */
+  --content-width-with-scrollbar: calc(100% - var(--scrollbar-width));
+  
+  /* ============================================
+   * レスポンシブ対応の計算値
+   * ============================================ */
+  
+  /* タブレット用の固定列幅 */
+  --fixed-column-width-tablet: min(var(--fixed-column-1-actual-width), 70px);
+  
+  /* モバイル用の固定列幅 */
+  --fixed-column-width-mobile: min(var(--fixed-column-1-actual-width), 60px);
+  
+  /* ============================================
+   * ポップアップの計算値
+   * ============================================ */
+  
+  /* ポップアップの最大高さ（ビューポートから余白を引いた値） */
+  --popup-max-height: calc(100vh - 40px);
+  
+  /* ============================================
+   * その他の計算値
+   * ============================================ */
+  
+  /* コンパクトモードのセル高さ */
+  --table-compact-cell-height: calc(var(--table-compact-row-height) + 2px);
+}

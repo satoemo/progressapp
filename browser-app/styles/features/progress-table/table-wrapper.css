@@ -1,0 +1,55 @@
+/* テーブルラッパーのスタイル */
+
+/* 基本のテーブルラッパー */
+.table-wrapper {
+  overflow: auto;
+  max-height: var(--table-max-height);
+  position: relative;
+  background-color: var(--bg-white);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+
+/* 進捗表専用の詳細度を上げた定義 */
+.progress-container .table-wrapper,
+.progress-table-container .table-wrapper {
+  max-height: var(--table-max-height) !important;
+}
+
+/* スクロールバーのスタイル */
+.table-wrapper::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--color-gray-600);
+  border-radius: var(--border-radius-xs);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-700);
+}
+
+/* 高さのバリエーション */
+.table-wrapper--height-sm {
+  max-height: var(--table-wrapper-height-sm);
+}
+
+.table-wrapper--height-md {
+  max-height: var(--table-wrapper-height-md);
+}
+
+.table-wrapper--height-lg {
+  max-height: var(--table-wrapper-height-lg);
+}
+
+/* パフォーマンス最適化 */
+.table-wrapper {
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+}

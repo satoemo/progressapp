@@ -1,0 +1,155 @@
+/* コアスタイル */
+@import './core/reset.css';
+@import './core/01-settings/base-variables.css';
+@import './core/02-computed/computed-variables.css';
+@import './core/variables.css'; /* 互換性のため一時的に保持 */
+@import './core/utils.css';
+
+/* コンポーネントスタイル */
+@import './components/buttons.css';
+@import './components/cell-editor.css';
+@import './components/filter-dropdown.css';
+@import './components/sidebar.css';
+@import './components/field-dropdown.css';
+@import './components/calendar-popup.css';
+
+/* 機能固有スタイル */
+@import './features/progress-table/index.css';
+@import './features/norma-table.css';
+@import './features/simulation.css';
+@import './features/staff.css';
+
+/* テーマ・環境固有スタイル */
+@import './themes/kintone-app.css';
+
+
+/* コンテナ */
+.app-container {
+  max-width: 100%;
+  margin: var(--spacing-0) auto;
+  padding: var(--spacing-5);
+}
+
+/* 進捗テーブルコンテナ */
+.progress-table-container {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-base);
+  overflow: hidden;
+}
+
+
+/* テーブルラッパー - table/base.cssでmax-heightのみ追加 */
+.table-wrapper {
+  max-height: calc(100vh - var(--popup-width-max));
+}
+
+
+/* 進捗セルの色分け */
+.progress-cell {
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.progress-cell:hover {
+  opacity: 0.8;
+}
+
+/* 進捗セルの色定義は features/progress-table/colors.css に移行 */
+
+/* ローディング */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-index-header);
+}
+
+.loading-spinner {
+  border: var(--border-width-extra-thick) solid var(--color-spinner-border);
+  border-top: var(--border-width-extra-thick) solid var(--color-primary);
+  border-radius: 50%;
+  width: var(--loading-spinner-size);
+  height: var(--loading-spinner-size);
+  animation: spin var(--transition-animation) linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* エラー・空状態 */
+.error-message {
+  color: var(--color-danger);
+  padding: var(--spacing-5);
+  text-align: center;
+  font-weight: 500;
+}
+
+.empty-state {
+  padding: var(--spacing-8);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* レスポンシブ */
+/* 768px以下の調整は各機能ファイルに移行済み */
+
+/* ==================== v8互換スタイル ==================== */
+
+/* グループヘッダーの色定義は features/progress-table/colors.css に移行 */
+
+/* クリック可能な進捗セル */
+.clickable-progress {
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.progress-table td.clickable-progress:hover {
+  background-color: var(--color-light-green-hover);
+}
+
+/* コンパクトスタイル（v8互換） */
+.progress-container-simple {
+  max-height: var(--table-max-height);
+  overflow: auto;
+  position: relative;
+  background-color: var(--color-white);
+  border: var(--border-width) solid var(--border-color);
+}
+
+
+
+/* エラー通知 */
+.error-notification {
+  position: fixed;
+  top: var(--spacing-5);
+  right: var(--spacing-5);
+  background-color: var(--color-error-notification);
+  color: var(--color-white);
+  padding: var(--spacing-4);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-index-dropdown);
+  display: none;
+  max-width: var(--popup-width-max);
+  animation: slideInRight var(--transition-slow);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

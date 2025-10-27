@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kintone進捗管理アプリ - 動作確認環境</title>
+    <!-- ビルド済みスタイルシートを読み込み -->
+    <link rel="stylesheet" href="./dist/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .test-header {
+            background-color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .test-header h1 {
+            margin: 0;
+            color: #333;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .header-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .header-button {
+            padding: 8px 16px;
+            border: 1px solid #0d6efd;
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .header-button:hover {
+            background-color: #0b5ed7;
+            border-color: #0b5ed7;
+        }
+
+        .header-button-secondary {
+            padding: 8px 16px;
+            border: 1px solid #6c757d;
+            background-color: #6c757d;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .header-button-secondary:hover {
+            background-color: #5c636a;
+            border-color: #5c636a;
+        }
+        
+        /* メインコンテナのスタイル */
+        #app {
+            background-color: #f5f5f5;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="test-header">
+        <div>
+            <h1>kintone進捗管理アプリ - 動作確認環境</h1>
+        </div>
+    </div>
+    
+    <!-- アプリケーションコンテナ -->
+    <div id="app"></div>
+
+    <!-- 不要なテストファイルの読み込みを削除 -->
+    <script>
+        // 不要なスクリプトエラーを抑制
+        window.addEventListener('error', function(e) {
+            if (e.filename && e.filename.includes('bundle.js')) {
+                e.preventDefault();
+                console.log('Bundle.jsエラーを無視:', e.filename);
+            }
+        });
+    </script>
+    
+    <!-- ビルド済みファイルを読み込み（モックモードを強制） -->
+    <script>
+        // URLパラメータにeventStore=mockを追加
+        if (!window.location.search.includes('eventStore=mock')) {
+            window.location.search = '?eventStore=mock';
+        }
+    </script>
+    
+    <!-- アプリケーション本体を読み込み -->
+    <!-- メインアプリケーション（ビルド後に有効化） -->
+    <!-- 最新ビルド (2025-09-07) を使用 -->
+    <script src="./dist/kintone-progress-app.test.iife.js"></script>
+    
+    <!-- Phase 3テストスクリプト (削除済み) -->
+    
+    <!-- テスト修正確認スクリプト (削除済み) -->
+    
+    <script>
+        // アプリケーションが読み込まれるまで待機
+        async function waitForApp() {
+            let attempts = 0;
+            while (attempts < 50) {
+                if (window.kintoneProgressAppV10_3) {
+                    return window.kintoneProgressAppV10_3;
+                }
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+            throw new Error('App failed to load');
+        }
+        
+        
+        async function generateDummyData() {
+            try {
+                const app = await waitForApp();
+                if (app && app.generateDummyData) {
+                    // 既存のモックデータをクリア
+                    const keysToRemove = [];
+                    for (let key in localStorage) {
+                        if (key.includes('mock')) {
+                            keysToRemove.push(key);
+                        }
+                    }
+                    keysToRemove.forEach(key => localStorage.removeItem(key));
+                    console.log(`Cleared ${keysToRemove.length} mock data items from LocalStorage`);
+                    
+                    await app.generateDummyData(50);
+                    console.log('ダミーデータ生成完了（50件）');
+                } else {
+                    console.error('generateDummyData method not found');
+                }
+            } catch (error) {
+                console.error('Failed to generate dummy data:', error);
+            }
+        }
+        
+        function clearMockStorage() {
+            console.log('=== ストレージクリア開始 ===');
+            
+            // クリア前のLocalStorageの状態を記録
+            const allKeys = Object.keys(localStorage);
+            console.log(`クリア前: ${allKeys.length}個のキーが存在`);
+            
+            // アプリケーション関連のすべてのデータを削除
+            const keysToRemove = [];
+            for (let key in localStorage) {
+                if (key.includes('mock') || 
+                    key.includes('kintone') ||  // すべてのkintone関連データ
+                    key.includes('cut') ||      // カット関連データ
+                    key.includes('Cut') ||      // カット関連データ（大文字）
+                    key.includes('simplified') || // 簡略化ストア
+                    key.includes('test') ||
+                    key.includes('memo') ||     // メモデータ
+                    key.includes('norma') ||    // ノルマデータ
+                    key.includes('simulation') || // シミュレーションデータ
+                    key.includes('staff') ||    // 担当者データ
+                    key.startsWith('user_prefs_') || // ユーザー設定
+                    key.startsWith('cache_')) { // キャッシュデータ
+                    keysToRemove.push(key);
+                }
+            }
+            
+            // 削除対象のキーを表示
+            if (keysToRemove.length > 0) {
+                console.log('削除対象のキー:');
+                keysToRemove.forEach(key => {
+                    console.log(`  - ${key}`);
+                    localStorage.removeItem(key);
+                });
+            }
+            
+            // クリア後の確認
+            const remainingKeys = Object.keys(localStorage);
+            console.log(`クリア完了: ${keysToRemove.length}個のキーを削除`);
+            console.log(`残りのキー: ${remainingKeys.length}個`);
+            if (remainingKeys.length > 0) {
+                console.log('残っているキー:', remainingKeys);
+            }
+            
+            console.log(`ストレージをクリアしました（${keysToRemove.length}個のキーを削除）。ページを再読み込みします。`);
+            window.location.reload();
+        }
+        
+        // 初期化
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('kintone進捗管理アプリ - 動作確認環境');
+            console.log('利用可能な機能:');
+            console.log('  - ダミーデータ生成（50件）');
+            console.log('  - ストレージクリア');
+            
+            // Phase0: 重複初期化を削除（アプリケーションは既に初期化済み）
+            // try {
+            //     const app = await waitForApp();
+            //     if (app && app.initialize) {
+            //         await app.initialize();
+            //         console.log('アプリケーション初期化完了');
+            //     }
+            // } catch (error) {
+            //     console.error('初期化エラー:', error);
+            // }
+        });
+    </script>
+    
+    <!-- ビルド済みテストファイル（オプション） -->
+    <!-- 
+    ビルド済みテストを使用する場合は以下のコメントを解除してください：
+    1. まずビルド: npm run build:test
+    2. 以下のコメントを解除
+    -->
+    <!-- ビルド済みテストファイル（有効化済み） -->
+    
+    <!-- 
+    Phase 3テスト実行方法：
+    コンソールで以下を実行:
+    
+    // Phase 3全テスト実行
+    runPhase3Tests();
+    
+    // 個別テスト実行
+    testServiceContainer();       // ServiceContainerテスト
+    testUnifiedDataStore();       // UnifiedDataStoreテスト
+    testApplicationFacade();      // ApplicationFacadeテスト
+    testDeletionService();        // 削除サービステスト
+    testPerformance();           // パフォーマンステスト
+    testEdgeCases();             // エッジケーステスト
+    -->
+</body>
+</html>

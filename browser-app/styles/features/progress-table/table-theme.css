@@ -1,0 +1,196 @@
+/**
+ * テーブルテーマ（見た目）専用スタイル
+ * 色、ボーダー、背景、影などの装飾的なスタイル
+ * レイアウトやサイズは含まない
+ */
+
+/* コンテナの見た目 */
+.progress-container {
+  background-color: var(--bg-white);
+}
+
+/* テーブルラッパーの見た目 */
+.table-wrapper {
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+
+/* ヘッダーの見た目 */
+.progress-table thead {
+  background-color: var(--bg-white);
+}
+
+/* セルの基本的な見た目 */
+.progress-table th,
+.progress-table td {
+  border-right: var(--border-width) solid var(--border-color);
+  border-bottom: var(--border-width) solid var(--border-color);
+}
+
+/* 最後の列のボーダーを削除 */
+.progress-table th:last-child,
+.progress-table td:last-child {
+  border-right: none;
+}
+
+/* ヘッダーセルの見た目 */
+.progress-table th {
+  background-color: var(--bg-header);
+  color: var(--text-dark);
+  font-size: var(--font-size-sm);
+}
+
+/* フィールドヘッダー行の見た目 */
+.field-header-row th {
+  background-color: var(--bg-light);
+  font-weight: 500;
+  border: var(--border-width) solid var(--border-color);
+  border-bottom: var(--border-width-thick) solid var(--border-color);
+  font-size: var(--font-size-sm);
+}
+
+/* データセルの見た目 */
+.progress-table td {
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  border: var(--border-width) solid var(--border-color-light);
+  font-size: var(--font-size-sm);
+}
+
+/* ストライプ行 */
+.progress-table tbody tr:nth-child(even) td {
+  background-color: var(--bg-stripe);
+}
+
+/* ホバー効果 */
+.progress-table tbody tr:hover td {
+  background-color: var(--bg-hover);
+}
+
+/* グループヘッダーの見た目 */
+.group-header-row th {
+  font-weight: 600;
+  border: var(--border-width) solid var(--border-color);
+  border-bottom: var(--border-width-thick) solid var(--border-color);
+  font-size: var(--font-size-sm);
+}
+
+/* グループヘッダーの色（colors.cssと同じセレクタを使用、詳細度を上げる） */
+.group-header-row th.basic-group {
+  background-color: var(--group-basic-bg);
+  color: var(--group-basic-color);
+}
+
+.group-header-row th.info-group {
+  background-color: var(--group-info-bg);
+  color: var(--group-info-color);
+}
+
+.group-header-row th.progress-group {
+  background-color: var(--group-progress-bg);
+  color: var(--group-progress-color);
+}
+
+.group-header-row th.special-group {
+  background-color: var(--group-special-bg);
+  color: var(--group-special-color);
+}
+
+.group-header-row th.select-group {
+  background-color: var(--color-gray-50);
+  color: var(--text-light);
+}
+
+.group-header-row th.operation-group {
+  background-color: var(--color-gray-50);
+  color: var(--text-dark);
+}
+
+/* ソートアイコンの見た目 */
+.sort-icon {
+  color: var(--text-muted);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.sort-icon:hover {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+.sort-icon.active {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+/* フィルターアイコンの見た目 */
+.filter-icon {
+  color: var(--text-muted);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.filter-icon:hover {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+.filter-icon.active {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+/* 編集可能セルの見た目 */
+.editable-cell {
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.editable-cell:hover {
+  background-color: var(--color-light-green-hover);
+}
+
+.edit-icon {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+}
+
+
+/* 通貨フィールドの見た目 */
+.currency {
+  color: var(--text-secondary);
+  font-family: monospace;
+}
+
+/* リンクスタイル */
+.field-header-content a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.field-header-content a:hover {
+  text-decoration: underline;
+}
+
+/* ローディングセルの見た目 */
+.loading-cell {
+  color: var(--text-muted);
+  font-style: italic;
+  background-color: var(--bg-light);
+}
+
+/* 進捗入力フィールドの見た目 */
+.progress-input {
+  border: var(--border-width) solid var(--border-color-dark);
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+.progress-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  background-color: var(--bg-white);
+}

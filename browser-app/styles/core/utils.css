@@ -1,0 +1,219 @@
+/**
+ * 動的スタイル管理用CSS
+ * DynamicStyleManagerクラスと連携して使用
+ * 接頭辞 kdp- (kintone dynamic progress) を使用
+ */
+
+/* ========================================
+   表示状態制御
+   ======================================== */
+
+/* 非表示状態 */
+.kdp-hidden {
+  display: none !important;
+}
+
+/* 表示状態（明示的） */
+.kdp-visible {
+  display: block;
+}
+
+/* インライン要素用の表示状態 */
+.kdp-visible-inline {
+  display: inline;
+}
+
+.kdp-visible-inline-block {
+  display: inline-block;
+}
+
+/* ========================================
+   インタラクション
+   ======================================== */
+
+/* クリック可能な要素 */
+.kdp-clickable {
+  cursor: pointer;
+}
+
+/* テキスト編集可能な要素 */
+.kdp-text-cursor {
+  cursor: text;
+}
+
+/* 無効化された要素 */
+.kdp-disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ========================================
+   アイコン状態
+   ======================================== */
+
+/* 非アクティブなアイコン */
+.kdp-icon-inactive {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+/* アクティブなアイコン */
+.kdp-icon-active {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* ========================================
+   フィルター関連
+   ======================================== */
+
+/* アクティブなフィルターアイコン */
+.kdp-filter-active {
+  color: #dc3545;
+  margin-left: 4px;
+  font-weight: bold;
+}
+
+/* ========================================
+   位置制御（CSS変数使用）
+   ======================================== */
+
+/* 固定位置要素 */
+.kdp-fixed-position {
+  position: fixed;
+}
+
+/* 動的位置要素 */
+.kdp-dynamic-position {
+  position: absolute;
+  top: var(--kdp-top, auto);
+  left: var(--kdp-left, auto);
+  right: var(--kdp-right, auto);
+  bottom: var(--kdp-bottom, auto);
+}
+
+/* ========================================
+   サイズ制御（CSS変数使用）
+   ======================================== */
+
+/* 動的サイズ要素 */
+.kdp-dynamic-size {
+  width: var(--kdp-width, auto);
+  height: var(--kdp-height, auto);
+  min-width: var(--kdp-min-width, auto);
+  max-width: var(--kdp-max-width, auto);
+}
+
+/* ========================================
+   その他の動的プロパティ
+   ======================================== */
+
+/* 透明度制御 */
+.kdp-dynamic-opacity {
+  opacity: var(--kdp-opacity, 1);
+}
+
+/* z-index制御 */
+.kdp-dynamic-z-index {
+  z-index: var(--kdp-z-index, auto);
+}
+
+/* ========================================
+   ユーティリティクラス
+   ======================================== */
+
+/* 垂直配置 */
+.kdp-vertical-top {
+  vertical-align: top;
+}
+
+.kdp-vertical-middle {
+  vertical-align: middle;
+}
+
+.kdp-vertical-bottom {
+  vertical-align: bottom;
+}
+
+/* マージン調整 */
+.kdp-margin-left-2 {
+  margin-left: 2px;
+}
+
+.kdp-margin-left-4 {
+  margin-left: 4px;
+}
+
+/* ========================================
+   トランジション
+   ======================================== */
+
+/* スムーズな表示切り替え */
+.kdp-transition-opacity {
+  transition: opacity 0.3s ease;
+}
+
+.kdp-transition-all {
+  transition: all 0.3s ease;
+}
+
+/* ========================================
+   プログレスバー専用
+   ======================================== */
+
+/* プログレスバーの動的幅 */
+.kdp-progress-bar {
+  width: var(--kdp-width, 0%);
+  transition: width 0.3s ease;
+}
+
+/* ========================================
+   テーブル要素専用
+   ======================================== */
+
+/* テーブルセル（td/th）の幅制御 */
+.kdp-table-cell {
+  width: var(--kdp-width) !important;
+  min-width: var(--kdp-min-width) !important;
+  max-width: var(--kdp-max-width) !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* テーブル要素の幅制御 */
+.kdp-table {
+  width: var(--kdp-width) !important;
+  table-layout: fixed;
+}
+
+/* 固定カラムの位置制御 */
+.kdp-fixed-column {
+  position: sticky;
+  left: var(--kdp-left, 0);
+  z-index: 10;
+  background-color: inherit;
+}
+
+/* ========================================
+   ポップアップ・ドロップダウン専用
+   ======================================== */
+
+/* ポップアップの基本スタイル */
+.kdp-popup {
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ドロップダウンの基本スタイル */
+.kdp-dropdown {
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}

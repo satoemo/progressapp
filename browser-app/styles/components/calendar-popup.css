@@ -1,0 +1,155 @@
+/* 
+ * カレンダーポップアップコンポーネント
+ * CalendarPopup.tsで使用されるスタイル定義
+ */
+
+/* コンテナ - 画面全体を覆うオーバーレイ */
+.calendar-popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--popup-z-index);
+  pointer-events: none;
+}
+
+/* ポップアップ本体 */
+.calendar-popup {
+  position: absolute;
+  background-color: var(--popup-bg);
+  border: var(--border-width) solid var(--popup-border);
+  border-radius: var(--popup-border-radius);
+  box-shadow: var(--popup-shadow);
+  min-width: var(--calendar-popup-min-width);
+  pointer-events: auto;
+}
+
+/* ヘッダー部分 */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-bottom: var(--border-width) solid var(--border-color);
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.popup-title {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* 閉じるボタン */
+.popup-close-btn {
+  background: none;
+  border: none;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  color: var(--text-muted);
+  width: var(--button-size-sm);
+  height: var(--button-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-base);
+}
+
+.popup-close-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-dark);
+}
+
+/* カレンダー入力セクション */
+.calendar-section {
+  padding: var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.calendar-input {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--border-color-dark);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+}
+
+/* ボタンセクション */
+.buttons-section {
+  padding: 0 var(--spacing-3) var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* ボタン行 */
+.button-row {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+/* 共通ボタンスタイル */
+.popup-btn {
+  flex: 1;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-white);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  transition: var(--transition-base);
+}
+
+.popup-btn:hover {
+  background-color: var(--bg-light);
+}
+
+/* 今日ボタン */
+.btn-today {
+  background-color: var(--color-success);
+  color: var(--color-white);
+  border-color: var(--color-success);
+}
+
+.btn-today:hover {
+  background-color: var(--color-success-dark);
+}
+
+/* 不要ボタン */
+.btn-fuyou {
+  background-color: var(--progress-completed-bg);
+  color: var(--progress-completed-color);
+  border-color: var(--color-success);
+}
+
+.btn-fuyou:hover {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+/* 再取得ボタン */
+.btn-retake {
+  background-color: var(--progress-retake-bg);
+  color: var(--progress-retake-color);
+  border-color: var(--color-danger);
+}
+
+.btn-retake:hover {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+
+/* クリアボタン */
+.btn-clear {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+  border-color: var(--color-danger);
+}
+
+.btn-clear:hover {
+  background-color: var(--color-danger-dark);
+}

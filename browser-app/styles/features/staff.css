@@ -1,0 +1,370 @@
+/* 担当者別表示のスタイル */
+
+/* 進捗管理表のスタイルをインポート（テーブル見た目統一のため） */
+@import './progress-table/index.css';
+
+.staff-view {
+  padding: var(--spacing-5);
+  max-width: var(--modal-max-width);
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+.staff-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.staff-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-3xl);
+}
+
+.staff-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+/* 役割セレクター */
+.role-selector {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.role-buttons {
+  display: flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+.role-button {
+  padding: 6px 12px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.role-button:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.role-button.active {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #ffffff;
+}
+
+/* カードコンテナ */
+.staff-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-5);
+}
+
+/* スタッフカード */
+.staff-card {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 16px;
+  transition: all 0.2s;
+}
+
+.staff-card:hover {
+  background-color: #f5f5f5;
+}
+
+/* 非アクティブカード */
+.staff-card.inactive {
+  opacity: 0.5;
+  background-color: #f5f5f5;
+}
+
+.staff-card.inactive:hover {
+  background-color: #f5f5f5;
+}
+
+/* カードヘッダー */
+.staff-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.staff-name {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.staff-progress-rate {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+/* カード本体 */
+.staff-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* カウント表示 */
+.staff-counts {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.count-item {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.count-label {
+  display: block;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-1);
+}
+
+.count-value {
+  display: block;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+}
+
+/* 色分け */
+.total-count {
+  background-color: var(--color-staff-total-bg);
+}
+
+.total-count .count-value {
+  color: var(--color-staff-total-text);
+}
+
+.completed-count {
+  background-color: var(--color-staff-completed-bg);
+}
+
+.completed-count .count-value {
+  color: var(--color-staff-completed-text);
+}
+
+.progress-count {
+  background-color: var(--color-staff-progress-bg);
+}
+
+.progress-count .count-value {
+  color: var(--color-staff-progress-text);
+}
+
+/* 進捗バー */
+.staff-progress-bar {
+  height: 8px;
+  background-color: #e9ecef;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #28a745;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+/* テーブルコンテナ */
+.staff-table-container {
+  width: 100%;
+  position: relative;
+  padding: 10px;
+}
+
+/* テーブルラッパー（右側空白を防ぐ） */
+.staff-table-container .table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* 担当者別表示のテーブルセクション */
+.staff-table-section {
+  margin-bottom: 20px;
+}
+
+.staff-table-section .table-wrapper {
+  margin-bottom: 0;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+
+/* テーブルタイトル */
+.staff-table-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+/* 担当者別表示テーブル固有のスタイル */
+.staff-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: 11px;
+}
+
+/* 担当者別表示テーブルのグリッド線（進捗管理表と同じスタイル） */
+.staff-table th,
+.staff-table td {
+  border-right: var(--border-width) solid var(--border-color);
+  border-bottom: var(--border-width) solid var(--border-color);
+  padding: var(--table-cell-padding);
+  font-size: 11px !important;
+}
+
+/* 最後の列のボーダーを削除 */
+.staff-table th:last-child,
+.staff-table td:last-child {
+  border-right: none;
+}
+
+/* ヘッダーセルの見た目 */
+.staff-table th {
+  background-color: var(--bg-header);
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* データセルの見た目 */
+.staff-table td {
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+}
+
+/* ストライプ行（進捗管理表と同じスタイル） */
+.staff-table tbody tr:nth-child(even) td {
+  background-color: var(--bg-stripe);
+}
+
+/* ホバー効果（進捗管理表と同じスタイル） */
+.staff-table tbody tr:hover td {
+  background-color: var(--bg-hover);
+}
+
+/* スタッフ行 */
+.staff-row.inactive td {
+  opacity: 0.5;
+  background-color: var(--color-gray-50) !important;
+}
+
+.staff-table .staff-name {
+  font-weight: normal;
+}
+
+.staff-table .total-count,
+.staff-table .completed-count,
+.staff-table .progress-count {
+  text-align: center;
+  font-weight: 600;
+}
+
+.staff-table .total-count {
+  color: #333;
+}
+
+.staff-table .completed-count {
+  color: #28a745;
+}
+
+.staff-table .progress-count {
+  color: #007bff;
+}
+
+.staff-table .progress-rate {
+  text-align: center;
+  font-weight: 700;
+  color: #28a745;
+}
+
+/* テーブル内の進捗バー */
+.staff-table .progress-bar-cell {
+  width: 200px;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.staff-table .staff-progress-bar {
+  height: 8px;
+  background-color: #e9ecef;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.staff-table .progress-bar-fill {
+  height: 100%;
+  background-color: #28a745;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+/* フィールドカウント */
+.staff-table .field-count {
+  text-align: center;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .staff-view {
+    padding: var(--spacing-lg);
+  }
+  
+  .staff-cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .staff-table-container {
+    margin: 0 calc(-1 * var(--spacing-lg));
+  }
+  
+  .staff-table-container .staff-table-section .table-wrapper {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .staff-table {
+    font-size: var(--font-size-sm);
+  }
+  
+  .staff-table th,
+  .staff-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .staff-table .progress-bar-cell {
+    width: 100px;
+  }
+  
+  .role-buttons {
+    padding: 10px;
+  }
+  
+  .role-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

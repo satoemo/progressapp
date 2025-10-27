@@ -1,0 +1,133 @@
+/* フィルタドロップダウン */
+.filter-dropdown {
+  position: absolute;
+  background-color: var(--color-white);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-index-dropdown);
+  min-width: var(--popup-width-min);
+  max-width: var(--popup-width-max);
+}
+
+/* ヘッダー */
+.filter-dropdown-header {
+  padding: var(--spacing-md) var(--button-padding-x);
+  border-bottom: var(--border-width) solid var(--color-gray-300);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-gray-50);
+  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+}
+
+.filter-dropdown-title {
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  color: var(--text-light);
+}
+
+.filter-dropdown-count {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+}
+
+/* ボディ */
+.filter-dropdown-body {
+  max-height: var(--popup-width-max);
+  overflow-y: auto;
+  padding: var(--spacing-2) 0;
+}
+
+/* フィルタオプション */
+.filter-option {
+  display: flex;
+  align-items: center;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  cursor: pointer;
+  font-size: var(--font-size-md);
+  transition: background-color var(--transition-medium);
+}
+
+.filter-option:hover {
+  background-color: var(--color-gray-50);
+}
+
+.filter-option input[type="checkbox"] {
+  margin-right: var(--spacing-2);
+  cursor: pointer;
+}
+
+.filter-option-value {
+  margin-right: var(--spacing-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filter-option-count {
+  margin-left: var(--spacing-2);
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+}
+
+/* フッター */
+.filter-dropdown-footer {
+  padding: var(--spacing-2) var(--button-padding-x);
+  border-top: var(--border-width) solid var(--color-gray-300);
+  display: flex;
+  gap: var(--spacing-2);
+  justify-content: flex-end;
+  background-color: var(--color-gray-50);
+  border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+}
+
+/* ボタン */
+.filter-btn {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-width) solid var(--border-color);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: var(--transition-medium);
+  font-weight: 500;
+}
+
+.filter-btn:hover {
+  background-color: var(--color-gray-300);
+  border-color: var(--color-gray-500);
+}
+
+.filter-btn-apply {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.filter-btn-apply:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.filter-btn-clear {
+  color: var(--text-secondary);
+}
+
+/* スクロールバー */
+.filter-dropdown-body::-webkit-scrollbar {
+  width: var(--scrollbar-width-thin);
+}
+
+.filter-dropdown-body::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+.filter-dropdown-body::-webkit-scrollbar-thumb {
+  background: var(--color-gray-600);
+  border-radius: var(--border-radius-xs);
+}
+
+.filter-dropdown-body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-700);
+}

@@ -1,0 +1,326 @@
+:root {
+  /* ============================================
+   * 色定義
+   * ============================================ */
+  
+  /* 基本色 */
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --color-info: #17a2b8;
+  --color-purple: #6f42c1;
+  
+  /* 基本色のホバー/アクティブ状態 */
+  --color-primary-dark: #0056b3;
+  --color-secondary-dark: #545b62;
+  --color-success-dark: #218838;
+  --color-warning-dark: #e0a800;
+  --color-danger-dark: #c82333;
+  --color-info-dark: #138496;
+  
+  /* その他の特殊色 */
+  --color-error-notification: #f44336;
+  --color-light-green-hover: #e8f5e9;
+  --color-spinner-border: #f3f3f3;
+  
+  /* 固定列の背景色 */
+  --color-fixed-column-bg: #f8f9fa;
+  --color-fixed-column-bg-even: #f3f4f6;
+  --color-fixed-column-bg-hover: #e1e5e9;
+  
+  /* エラー通知色 */
+  --color-error-bg-light: #f8d7da;
+  --color-error-text-dark: #721c24;
+  --color-error-border-light: #f5c6cb;
+  
+  /* スタッフビュー専用色 */
+  --color-staff-total-bg: #e3f2fd;
+  --color-staff-total-text: #1976d2;
+  --color-staff-completed-bg: #e8f5e9;
+  --color-staff-completed-text: #2e7d32;
+  --color-staff-progress-bg: #fff8e1;
+  --color-staff-progress-text: #f57c00;
+  
+  /* kintone環境専用色 */
+  --color-kintone-primary: #3498db;
+  --color-kintone-hover: #e8f2ff;
+  --color-kintone-active: #d4e7ff;
+  --color-kintone-bg: #f7f9fa;
+  --color-kintone-error-bg: #fee;
+  --color-kintone-error-border: #fcc;
+  --color-kintone-error-text: #c33;
+  
+  /* グレースケール */
+  --color-white: #ffffff;
+  --color-gray-50: #f8f9fa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #f0f0f0;
+  --color-gray-300: #e9ecef;
+  --color-gray-400: #dee2e6;
+  --color-gray-500: #ced4da;
+  --color-gray-600: #6c757d;
+  --color-gray-700: #495057;
+  --color-gray-800: #343a40;
+  --color-gray-900: #212529;
+  --color-black: #000000;
+  
+  /* テキスト色 */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #6c757d;
+  --text-dark: #212529;
+  --text-light: #495057;
+  
+  /* 境界線色 */
+  --border-color: #dee2e6;
+  --border-color-light: #e9ecef;
+  --border-color-dark: #ced4da;
+  --border-color-kintone: #e3e7e8;
+  --border-focus: #80bdff;
+  
+  /* 背景色 */
+  --bg-body: #f5f5f5;
+  --bg-white: #ffffff;
+  --bg-light: #f8f9fa;
+  --bg-gray: #f0f0f0;
+  --bg-hover: #e9ecef;
+  --bg-stripe: #fafbfc;
+  
+  /* ============================================
+   * 進捗セルの色
+   * ============================================ */
+  
+  /* 完了 */
+  --progress-completed-bg: #d4edda;
+  --progress-completed-color: #155724;
+  
+  /* 不要 */
+  --progress-not-required-bg: #e2e3e5;
+  --progress-not-required-color: #383d41;
+  
+  /* 再取得 */
+  --progress-retake-bg: #f8d7da;
+  --progress-retake-color: #721c24;
+  
+  /* ============================================
+   * グループヘッダーの色
+   * ============================================ */
+  
+  /* 基本グループ */
+  --group-basic-bg: #e3f2fd;
+  --group-basic-color: #1565c0;
+  
+  /* 情報グループ */
+  --group-info-bg: #fff3e0;
+  --group-info-color: #e65100;
+  
+  /* 進捗グループ */
+  --group-progress-bg: #e8f5e9;
+  --group-progress-color: #2e7d32;
+  
+  /* 特殊グループ */
+  --group-special-bg: #fce4ec;
+  --group-special-color: #c2185b;
+  
+  /* ============================================
+   * ノルマ表の色
+   * ============================================ */
+  
+  /* 達成度による色分け */
+  --achievement-high-bg: #d4edda;
+  --achievement-high-color: #155724;
+  --achievement-medium-bg: #fff3cd;
+  --achievement-medium-color: #856404;
+  --achievement-low-bg: #f8d7da;
+  --achievement-low-color: #721c24;
+  
+  /* ノルマ表の基本色 */
+  --norma-border-color: #dee2e6;
+  --norma-header-bg: #f8f9fa;
+  
+  /* ============================================
+   * ポップアップ共通
+   * ============================================ */
+  
+  /* ポップアップ基本スタイル */
+  --popup-bg: var(--color-white);
+  --popup-border: var(--border-color);
+  --popup-shadow: var(--shadow-lg);
+  --popup-border-radius: var(--border-radius-sm);
+  --popup-z-index: 10000;
+  --popup-min-width: 120px;
+  
+  /* ドロップダウン専用 */
+  --dropdown-item-hover-bg: var(--bg-hover);
+  --dropdown-item-current-bg: var(--color-kintone-active);
+  --dropdown-scrollbar-thumb: var(--color-gray-600);
+  --dropdown-scrollbar-track: var(--color-gray-100);
+  
+  /* カレンダー専用 */
+  --calendar-popup-min-width: var(--popup-width-default);
+  
+  /* ============================================
+   * スペーシング
+   * ============================================ */
+  
+  --spacing-0: 0;
+  --spacing-0-5: 2px;
+  --spacing-1: 4px;
+  --spacing-2: 6px;
+  --spacing-3: 8px;
+  --spacing-4: 12px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 32px;
+  --spacing-8: 40px;
+  
+  /* 特定用途のスペーシング */
+  --spacing-xs: 4px;
+  --spacing-sm: 4px;
+  --spacing-md: 8px;
+  --spacing-lg: 15px;
+  --spacing-xl: 18px;
+  --spacing-2xl: 30px;
+  
+  /* 細かいスペーシング */
+  --spacing-1px: 1px;
+  --spacing-2px: 2px;
+  --spacing-3px: 3px;
+  --spacing-14px: 14px;
+  --spacing-18px: 18px;
+  --spacing-30px: 30px;
+  
+  /* ============================================
+   * フォントサイズ
+   * ============================================ */
+  
+  --font-size-xs: 10px;
+  --font-size-sm: 11px;
+  --font-size-base: 12px;
+  --font-size-md: 12px;
+  --font-size-lg: 13px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  
+  /* ============================================
+   * 行の高さ
+   * ============================================ */
+  
+  --line-height-compact: 1;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* ============================================
+   * サイズ定数
+   * ============================================ */
+  
+  /* ボタン */
+  --button-height: 26px;
+  --button-size-sm: 22px;
+  --button-padding-x: 8px;
+  --button-padding-y: 4px;
+  
+  /* テーブル */
+  --table-row-height: 20px;
+  --table-header-height: 28px;
+  --table-header-with-summary-height: 50px;
+  --field-header-content-min-height: 25px;
+  --table-cell-padding-x: 4px;
+  --table-cell-padding-y: 2px;
+  --table-cell-padding: 2px 4px;
+  --table-min-cell-width: 50px;
+  --table-std-cell-width: 80px;
+  --table-max-height: 760px;
+  
+  /* サイドバー */
+  --sidebar-width: 150px;
+  --sidebar-collapsed-width: 60px;
+  
+  /* 固定列 */
+  --fixed-column-min-width: 120px;
+  
+  /* その他のサイズ */
+  --scrollbar-width: 8px;
+  --scrollbar-width-thin: 6px;
+  --loading-spinner-size: 40px;
+  --popup-width-default: 220px;
+  --popup-width-min: 160px;
+  --popup-width-max: 240px;
+  --icon-size-sm: 18px;
+  --icon-size-md: 24px;
+  --table-compact-row-height: 18px;
+  --table-compact-header-height: 20px;
+  --modal-max-width: 1400px;
+  --fixed-column-width-1: 40px;
+  --fixed-column-width-2: 80px;
+  --fixed-column-width-3: 120px;
+  --fixed-column-offset-2: 40px;
+  --fixed-column-offset-3: 140px;
+  --norma-cell-min-width: 50px;
+  --norma-table-min-width: 800px;
+  --norma-max-height: 600px;
+  --norma-week-min-width: 60px;
+  --norma-personal-min-width: 80px;
+  --compact-cell-padding: 1px 3px;
+  --table-wrapper-height-sm: 927px;
+  --table-wrapper-height-md: 1112px;
+  --table-wrapper-height-lg: 1333px;
+  --delete-column-width: 60px;
+  
+  /* ============================================
+   * 境界線
+   * ============================================ */
+  
+  --border-width: 1px;
+  --border-width-thick: 2px;
+  --border-width-extra-thick: 3px;
+  --border-radius-xs: 3px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --outline-width: 2px;
+  
+  /* ============================================
+   * 影
+   * ============================================ */
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  /* ============================================
+   * トランジション
+   * ============================================ */
+  
+  --transition-fast: all 0.1s ease;
+  --transition-medium: all 0.15s ease;
+  --transition-base: all 0.2s ease;
+  --transition-slow: all 0.3s ease;
+  --transition-very-slow: all 0.5s ease;
+  --transition-button: all 0.15s ease-in-out;
+  --transition-animation: all 1s ease;
+  
+  /* ============================================
+   * z-index
+   * ============================================ */
+  
+  --z-index-base: 1;
+  --z-index-sticky-cell: 2;
+  --z-index-sticky-header: 3;
+  --z-index-fixed-column: 10;
+  --z-index-header: 100;
+  --z-index-sticky-table: 200;
+  --z-index-sticky-header-cell: 201;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+  --z-index-highest: 5000;
+}

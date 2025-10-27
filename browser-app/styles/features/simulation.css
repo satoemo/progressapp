@@ -1,0 +1,279 @@
+/* シミュレーション画面のスタイル */
+
+/* ノルマ表スタイル */
+@import './norma-table.css';
+
+.simulation-view {
+  padding: var(--spacing-5);
+  max-width: var(--modal-max-width);
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+.simulation-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.simulation-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-3xl);
+}
+
+.simulation-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+/* パラメータセクション */
+.simulation-parameters {
+  padding: var(--spacing-lg) 0;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.simulation-parameters h3 {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-xl);
+  color: var(--text-light);
+}
+
+.parameter-grid {
+  display: flex;
+  gap: var(--spacing-5);
+  align-items: flex-end;
+  margin-bottom: var(--spacing-lg);
+}
+
+.parameter-item {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-1) + 1px);
+}
+
+.parameter-item label {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.parameter-item input {
+  padding: var(--spacing-2) var(--button-padding-x);
+  border: var(--border-width) solid var(--border-color-dark);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-lg);
+}
+
+.apply-parameters {
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  transition: background-color var(--transition-base);
+}
+
+.apply-parameters:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* プロジェクト情報 */
+.project-info {
+  margin-top: var(--spacing-lg);
+}
+
+.info-grid {
+  display: flex;
+  gap: var(--spacing-2xl);
+}
+
+.info-item {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+.info-label {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+}
+
+.info-value {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* 作業予定入力セクション */
+.schedule-input-section {
+  background-color: var(--color-white);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-5);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.schedule-input-section h3 {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-xl);
+  color: var(--text-light);
+}
+
+.schedule-input-container {
+  overflow-x: auto;
+}
+
+.schedule-input-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-lg);
+}
+
+.schedule-input-table th {
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-md) var(--spacing-2);
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-light);
+  border-bottom: var(--border-width-thick) solid var(--border-color);
+}
+
+.schedule-input-table td {
+  padding: var(--spacing-2);
+  border-bottom: var(--border-width) solid var(--border-color-light);
+}
+
+.schedule-input-table tr:hover {
+  background-color: var(--color-gray-50);
+}
+
+.schedule-input-table input[type="date"],
+.schedule-input-table input[type="number"] {
+  width: 100%;
+  padding: var(--spacing-1) var(--spacing-2);
+  border: var(--border-width) solid var(--border-color-dark);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-md);
+}
+
+.schedule-input-table input[type="number"] {
+  width: var(--table-std-cell-width);
+}
+
+.save-schedule {
+  padding: var(--spacing-1) var(--button-padding-x);
+  background-color: var(--color-success);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  transition: background-color var(--transition-base);
+}
+
+.save-schedule:hover {
+  background-color: var(--color-success-dark);
+}
+
+/* 進捗予測グラフ */
+.progress-chart-section {
+  background-color: var(--color-white);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-5);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.progress-chart-section h3 {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-xl);
+  color: var(--text-light);
+}
+
+.text-chart {
+  font-family: 'Courier New', monospace;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-tight);
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+  overflow-x: auto;
+}
+
+/* 日別作業予定表 */
+.work-schedule-section {
+  background-color: var(--color-white);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-5);
+}
+
+.work-schedule-section h3 {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-xl);
+  color: var(--text-light);
+}
+
+.work-schedule-container {
+  overflow-x: auto;
+}
+
+.work-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-lg);
+}
+
+.work-schedule-table th {
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-md) var(--spacing-2);
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-light);
+  border-bottom: var(--border-width-thick) solid var(--border-color);
+}
+
+.work-schedule-table td {
+  padding: var(--spacing-2);
+  border-bottom: var(--border-width) solid var(--border-color-light);
+}
+
+.work-schedule-table tr:hover {
+  background-color: var(--color-gray-50);
+}
+
+/* 遅延行の強調表示 */
+.work-schedule-table tr.delayed {
+  background-color: var(--color-kintone-error-bg);
+}
+
+.work-schedule-table tr.delayed td {
+  color: var(--color-danger);
+}
+
+/* データなし表示 */
+.no-data {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--spacing-8);
+  font-size: var(--font-size-lg);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .parameter-grid {
+    flex-direction: column;
+  }
+  
+  .info-grid {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .simulation-view {
+    padding: var(--spacing-lg);
+  }
+}

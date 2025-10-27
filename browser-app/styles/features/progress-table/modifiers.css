@@ -1,0 +1,134 @@
+/* テーブルモディファイア（バリエーション） */
+
+/* コンパクトモード */
+/* 共通のfont-size */
+.progress-table--compact :is(td, .group-header-row th, .field-header-row th, .field-title) {
+  font-size: var(--font-size-xs);
+}
+
+.progress-table--compact td {
+  padding: var(--compact-cell-padding);
+  height: var(--table-compact-row-height);
+}
+
+.progress-table--compact .group-header-row th {
+  padding: var(--spacing-2px) var(--spacing-1px);
+  height: var(--table-compact-header-height);
+}
+
+.progress-table--compact .field-header-row th {
+  padding: var(--spacing-2px);
+  min-height: var(--table-header-height);
+}
+
+.progress-table--compact .field-summary {
+  font-size: calc(var(--font-size-xs) - 1px);
+}
+
+/* コンパクトモードの削除リンク */
+.progress-table--compact .delete-link {
+  font-size: var(--font-size-sm);
+  padding: 0;
+}
+
+/* 固定高さモード（スクロール用） */
+.table-wrapper--scroll {
+  height: var(--table-wrapper-height-lg);
+  max-height: 80vh;
+  overflow-y: scroll;
+  overflow-x: auto;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  position: relative;
+}
+
+@media (max-height: 900px) {
+  .table-wrapper--scroll {
+    height: var(--table-wrapper-height-md);
+  }
+}
+
+@media (max-height: 768px) {
+  .table-wrapper--scroll {
+    height: var(--table-wrapper-height-sm);
+  }
+}
+
+/* 固定ヘッダーモード */
+.progress-table--fixed-header thead {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky-table);
+}
+
+/* 固定列モード - 1列目 */
+.progress-table--fixed-columns thead th:nth-child(1),
+.progress-table--fixed-columns tbody td:nth-child(1) {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: var(--z-index-sticky-cell) !important;
+  width: var(--fixed-column-1-actual-width);
+  min-width: var(--fixed-column-1-actual-width);
+  max-width: var(--fixed-column-1-actual-width);
+}
+
+/* 固定列モード - 2列目 */
+.progress-table--fixed-columns thead th:nth-child(2),
+.progress-table--fixed-columns tbody td:nth-child(2) {
+  position: sticky !important;
+  left: var(--fixed-column-2-offset) !important;
+  z-index: var(--z-index-sticky-cell) !important;
+  width: var(--fixed-column-2-actual-width);
+  min-width: var(--fixed-column-2-actual-width);
+  max-width: var(--fixed-column-2-actual-width);
+}
+
+/* 3列目は現在固定していない */
+
+/* 固定列のz-index調整 */
+.progress-table--fixed-columns thead tr:nth-child(1) th:nth-child(1),
+.progress-table--fixed-columns thead tr:nth-child(1) th:nth-child(2),
+.progress-table--fixed-columns thead tr:nth-child(2) th:nth-child(1),
+.progress-table--fixed-columns thead tr:nth-child(2) th:nth-child(2) {
+  z-index: var(--z-index-sticky-header) !important;
+}
+
+/* 固定列の背景色（ストライプパターンに統一） */
+.progress-table.progress-table--fixed-columns tbody .data-row td:nth-child(1),
+.progress-table.progress-table--fixed-columns tbody .data-row td:nth-child(2) {
+  background-color: var(--bg-white);
+}
+
+.progress-table.progress-table--fixed-columns tbody .data-row:nth-child(even) td:nth-child(1),
+.progress-table.progress-table--fixed-columns tbody .data-row:nth-child(even) td:nth-child(2) {
+  background-color: var(--bg-stripe);
+}
+
+.progress-table.progress-table--fixed-columns tbody .data-row:hover td:nth-child(1),
+.progress-table.progress-table--fixed-columns tbody .data-row:hover td:nth-child(2) {
+  background-color: var(--bg-hover);
+}
+
+/* 印刷対応 */
+@media print {
+  .table-wrapper--scroll {
+    overflow: visible;
+    height: auto;
+    max-height: none;
+  }
+  
+  .progress-table--fixed-header thead {
+    position: static;
+  }
+  
+  .progress-table--fixed-columns thead th:nth-child(1),
+  .progress-table--fixed-columns thead th:nth-child(2),
+  .progress-table--fixed-columns tbody td:nth-child(1),
+  .progress-table--fixed-columns tbody td:nth-child(2) {
+    position: static;
+  }
+  
+  .data-row {
+    page-break-inside: avoid;
+  }
+}
