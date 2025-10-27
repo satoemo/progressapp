@@ -1,0 +1,55 @@
+# CodeRabbit Configuration
+# https://docs.coderabbit.ai/guides/configure-coderabbit
+
+# Language: 日本語でレビュー
+language: ja-JP
+
+# Review Settings
+reviews:
+  # レビューの詳細度
+  profile: chill
+
+  # 自動レビューを有効化
+  auto_review:
+    enabled: true
+    drafts: false
+
+  # レビュー対象外のパターン
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/build/**"
+    - "!**/*.min.js"
+    - "!**/*.min.css"
+    - "!**/package-lock.json"
+    - "!**/yarn.lock"
+
+  # レビュー対象のパターン（TypeScript、JavaScript、YAML、Markdown）
+  path_instructions:
+    - path: "browser-app/**/*.ts"
+      instructions: |
+        - TypeScriptの型安全性を確認
+        - kintone REST API連携コードのエラーハンドリングをチェック
+        - DRY原則の遵守を確認（重複コードの指摘）
+        - メソッド長（20行前後が目安）を確認
+
+    - path: "cloudflare-workers/**/*.ts"
+      instructions: |
+        - Cloudflare Workers環境での動作を考慮
+        - Claude API連携のエラーハンドリングを確認
+        - セキュリティ（認証、CORS、レート制限）をチェック
+        - 環境変数の適切な使用を確認
+
+    - path: "**/*.md"
+      instructions: |
+        - ドキュメントの明確性と完全性を確認
+        - コード例の正確性をチェック
+
+# Chat機能の設定
+chat:
+  # チャット機能を有効化
+  auto_reply: true
+
+# 学習とフィードバック
+early_access: false
+enable_free_tier: true
